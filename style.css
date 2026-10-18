@@ -1,0 +1,2046 @@
+@charset "UTF-8";
+
+/* ==========================================
+   MINDDESIGN – STYLE.CSS
+   ========================================== */
+
+/* ==========================================
+   1. SCHRIFTEN UND FARBEN
+   ========================================== */
+
+@font-face {
+  font-family: "Mansory";
+  src: url("font/Mansory Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+:root {
+  /* Hauptfarben */
+  --cream: #F2EBDD;
+  --bloom: #E8DCCE;
+  --clay: #D1A89A;
+
+  /* Altrosa */
+  --rose: #BD8178;
+  --rose-soft: #E6BCAD;
+
+  /* Textfarben */
+  --brown: #49352C;
+  --muted: #76594E;
+  --white: #FFF9F3;
+
+  /* Schriftarten */
+  --font-display: "Mansory", Georgia, serif;
+  --font-body: "Manrope", Arial, sans-serif;
+
+  /* Abstände */
+  --gutter: clamp(22px, 6vw, 105px);
+  --header-height: 82px;
+}
+
+/* ==========================================
+   2. ALLGEMEIN
+   ========================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 15px);
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font: 400 15px/1.7 var(--font-body);
+  overflow-x: clip;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.container {
+  margin-inline: var(--gutter);
+}
+
+.section {
+  padding-bottom: clamp(65px, 7vw, 115px);
+}
+
+.section-ghost {
+  margin: 0 0 40px;
+  padding-top: clamp(45px, 5vw, 75px);
+
+  font: 300 clamp(52px, 8vw, 128px)/1
+        var(--font-body);
+
+  letter-spacing: -.085em;
+  color: rgba(151, 96, 77, .26);
+}
+
+::selection {
+  background: var(--rose);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 4px;
+}
+
+/* ==========================================
+   3. GLASBUTTON
+   ========================================== */
+
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 12px 25px;
+
+  border: 1px solid rgba(255, 255, 255, .88);
+  border-radius: 13px;
+
+  background: rgba(255, 249, 243, .25);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, .8),
+    0 12px 25px rgba(73, 53, 44, .08);
+
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: background .25s;
+}
+
+.glass-button:hover {
+  background: rgba(255, 249, 243, .65);
+}
+
+/* ==========================================
+   4. NAVIGATION
+   ========================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+
+  background: rgba(238, 220, 211, .93);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, .8);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  min-height: var(--header-height);
+  gap: clamp(22px, 3vw, 50px);
+}
+
+.brand {
+  width: 168px;
+  flex: none;
+}
+
+.brand img {
+  width: 100%;
+  height: 70px;
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 2px 3px rgba(73, 53, 44, .26));
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex: 1;
+  gap: 14px;
+}
+
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  transition: color .25s;
+}
+
+.nav-links a:hover {
+  color: var(--rose);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+}
+
+/* ==========================================
+   5. HERO
+   ========================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 72fr 28fr;
+
+  margin-top: var(--header-height);
+  height: clamp(450px, 60svh, 565px);
+  min-height: 0;
+
+  overflow: hidden;
+  background: var(--bloom);
+}
+
+.hero-image {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+
+  background: var(--clay);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 0%;
+}
+
+.hero-content {
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px 14px;
+
+  background: linear-gradient(
+    150deg,
+    #F5E8DB,
+    var(--cream)
+  );
+
+  text-align: center;
+}
+
+.hero-title {
+  margin-bottom: 25px;
+
+  font-size: clamp(32px, 3.5vw, 59px);
+  line-height: 1.05;
+}
+
+.hero-title > span,
+.hero-title > em {
+  display: block;
+}
+
+.hero-title > em {
+  margin: 12px 0 16px;
+
+  color: var(--rose);
+
+  font-size: clamp(77px, 7vw, 132px);
+  line-height: .86;
+  font-style: normal;
+}
+
+.hero-subtitle {
+  margin-bottom: 28px;
+
+  font: 400 clamp(20px, 2vw, 32px)/1.2
+        var(--font-display);
+}
+
+/* ==========================================
+   6. MARQUEE
+   Bewegung ausschließlich per JavaScript
+   ========================================== */
+
+.marquee {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 115px;
+  min-height: 115px;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+  background: var(--rose-soft);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+  height: 100%;
+
+  gap: 85px;
+
+  will-change: transform;
+}
+
+.marquee-track span {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  font: 400 24px/1.4 var(--font-display);
+
+  transform: none;
+}
+
+
+/* ==========================================
+   7. ÜBER MICH
+   ========================================== */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr .95fr;
+  align-items: center;
+  gap: clamp(35px, 7vw, 100px);
+}
+.about-copy h3 {
+  font-size: clamp(48px, 5vw, 82px);
+}
+.about-copy h3 em {
+  color: var(--rose);
+}
+.about-copy .lead {
+  max-width: 570px;
+  font-size: clamp(20px, 2vw, 29px);
+  line-height: 1.45;
+}
+.about-copy p:not(.lead) {
+  max-width: 560px;
+}
+
+/* ==========================================
+   8. PINTEREST-PORTRÄT
+   Hier kannst du die Position jeder Notiz
+   verändern.
+   ========================================== */
+.about-photo {
+  position: relative;
+  height: clamp(350px, 43vw, 625px);
+  overflow: visible;
+  isolation: isolate;
+  background: var(--bloom);
+}
+.about-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%);
+}
+.photo-heading {
+  display: none; /* Doppelte Überschrift bleibt nur links neben dem Foto */
+  position: absolute;
+  z-index: 3;
+  top: 5%;
+  left: 0;
+  right: 0;
+  color: var(--white);
+  font: 400 clamp(30px, 4vw, 62px)/1
+        var(--font-display);
+  text-align: center;
+  text-shadow: 0 2px 10px #49352C88;
+}
+.photo-note {
+  position: absolute;
+  z-index: 3;
+  width: max-content;
+  max-width: 45%;
+  padding: 10px 8px;
+  color: var(--rose);
+  background: rgba(255, 249, 243, 1);
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+}
+.photo-note span {
+  display: block;
+  font-family:
+    "Segoe Print",
+    "Bradley Hand",
+    "Comic Sans MS",
+    cursive;
+  font-size: clamp(10px, 1.25vw, 18px);
+  font-style: italic;
+  line-height: 1.55;
+  transform: translateY(5px) rotate(-4deg);
+}
+.photo-note svg {
+  display: block;
+  width: 80px;
+  height: 48px;
+  margin-top: 10px;
+  fill: none;
+  stroke: var(--rose);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+/* Position 1 */
+.note-one {
+  top: -5%;
+  left: -4%;
+}
+/* Position 2 */
+.note-two {
+  top: 15%;
+  right: -10%;
+}
+/* Position 3 */
+.note-three {
+  top: 44%;
+  left: -6%;
+}
+/* Position 4 */
+.note-four {
+  top: 68%;
+  right: -4%;
+}
+/* Position 5 */
+.note-five {
+  bottom: -2%;
+  left: -4%;
+}
+
+/* Pfeile auf der rechten Seite nach links spiegeln – Text bleibt unverändert. */
+.note-two svg,
+.note-four svg {
+  transform: scaleX(-1) !important;
+  transform-origin: center;
+}
+
+/* ==========================================
+   9. STECKBRIEF
+   ========================================== */
+.facts-section {
+  background: var(--bloom);
+}
+.facts-scroll {
+  position: relative;
+  /* Wird vom JavaScript passend berechnet. */
+  height: 1050px;
+}
+.facts-sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 15px);
+  display: grid;
+  grid-template-columns: 1fr 1.04fr;
+  align-items: center;
+  gap: clamp(25px, 6vw, 90px);
+  height: min(
+    70svh,
+    510px
+  );
+  min-height: 350px;
+}
+.fact-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 320px;
+  min-width: 0;
+  overflow: hidden;
+}
+.fact-art svg {
+  max-width: 100%;
+}
+.fact-card {
+  min-height: 325px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 249, 243, .85);
+  border: 1px solid white;
+  box-shadow:
+    12px 12px rgba(189, 129, 120, .27);
+}
+.fact-card > small {
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: #976959;
+}
+.fact-copy h3 {
+  margin: 13px 0;
+  font-size: clamp(38px, 4vw, 64px);
+}
+.fact-copy p {
+  max-width: 450px;
+  font-size: 14px;
+}
+.fact-progress {
+  height: 3px;
+  overflow: hidden;
+  background: #E3C8BB;
+}
+.fact-progress span {
+  display: block;
+  width: 20%;
+  height: 100%;
+  background: var(--rose);
+}
+
+/* ==========================================
+   10. STECKBRIEF – PINSEL
+   ========================================== */
+.brush-scene,
+.book-scene {
+  position: relative;
+  width: min(100%, 430px);
+  height: 280px;
+}
+.brush-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.paint-line {
+  fill: none;
+  stroke: var(--rose);
+  stroke-width: 24;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==========================================
+   11. STECKBRIEF – CODE
+   ========================================== */
+.code-window {
+  width: min(100%, 400px);
+  min-height: 230px;
+  padding: 22px;
+  border-radius: 13px;
+  background: var(--brown);
+  color: var(--cream);
+  box-shadow:
+    0 17px 30px rgba(73, 53, 44, .2);
+  font: 13px/1.9 Consolas, monospace;
+}
+.code-window span {
+  display: block;
+  min-height: 25px;
+  white-space: pre;
+}
+
+/* ==========================================
+   12. STECKBRIEF – HUND
+   ========================================== */
+.dog-svg {
+  width: min(100%, 430px);
+  height: 270px;
+  overflow: visible;
+}
+
+/* ==========================================
+   13. STECKBRIEF – BUCH & SCHUHE
+   ========================================== */
+.book-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.book-page {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+.shoe-group {
+  transform-box: view-box;
+  transform-origin: center;
+}
+
+/* ==========================================
+   14. STECKBRIEF – YOGA & TANZEN
+   ========================================== */
+.person-stage {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 290px;
+  gap: 10px;
+}
+.person-stage svg {
+  display: block;
+  width: 46%;
+  height: 270px;
+  overflow: visible;
+}
+.person-body {
+  fill: #C98E83;
+}
+.person-outfit {
+  fill: #A77770;
+}
+.person-skin {
+  fill: #EBC4AD;
+}
+.person-hair {
+  fill: #765044;
+}
+.person-limb {
+  fill: none;
+  stroke: #EBC4AD;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.person-shoe {
+  fill: #FFF9F3;
+  stroke: #BC9789;
+  stroke-width: 1.5;
+}
+
+/* ==========================================
+   15. MEIN WEG
+   ========================================== */
+.journey-layout {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: clamp(30px, 5vw, 75px);
+}
+.journey-wave {
+  height: 100%;
+  min-height: 100%;
+}
+.journey-wave svg {
+  display: block;
+  width: 80px;
+  height: 100%;
+  overflow: hidden;
+}
+.journey-wave path {
+  fill: none !important;
+  stroke-width: 3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.wave-background {
+  stroke: #E4C5B7;
+}
+.wave-animated {
+  stroke: var(--rose);
+}
+.journey-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+  min-height: clamp(
+    285px,
+    38svh,
+    400px
+  );
+  opacity: .52;
+}
+.journey-item small {
+  font-size: 11px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: #956958;
+}
+.journey-item h3 {
+  margin: 13px 0 18px;
+  font-size: clamp(42px, 5vw, 76px);
+}
+.journey-item h3 em {
+  color: var(--rose);
+}
+.journey-item p {
+  max-width: 560px;
+}
+
+/* ==========================================
+   16. MIND. IDEAS. INDIVIDUALITY.
+   ========================================== */
+
+.statement-section {
+  position: relative;
+  height: 150svh;
+  padding: 0;
+  background: var(--bloom);
+}
+
+.statement-title {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: calc(100svh - var(--header-height));
+  width: 100%;
+
+  margin: 0;
+  padding: 30px clamp(25px, 5vw, 80px);
+
+  color: var(--brown);
+  font-size: clamp(45px, 8vw, 125px);
+  line-height: 1;
+  text-align: center;
+
+  transform: none;
+}
+
+.statement-title span {
+  display: block;
+  will-change: transform, opacity;
+}
+
+/* ==========================================
+   17. DIE IDEE / LOGOENTSTEHUNG
+   ========================================== */
+.story-section {
+  background: var(--cream);
+}
+.story-layout {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(35px, 7vw, 110px);
+}
+.story-step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(
+    295px,
+    41svh,
+    420px
+  );
+  opacity: .5;
+}
+.story-step h3 {
+  margin-bottom: 15px;
+  font-size: clamp(38px, 4vw, 65px);
+}
+.story-step h3 em {
+  color: var(--rose);
+}
+.story-step p {
+  max-width: 420px;
+}
+.story-visual {
+  position: sticky;
+  top: calc(var(--header-height) + 16px);
+  align-self: start;
+  height: min(66svh, 530px);
+}
+.story-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #F6EDE3;
+  border: 1px solid #E1C4B5;
+}
+.story-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.story-scene.active {
+  opacity: 1;
+  visibility: visible;
+}
+/* Gedankenwolken */
+.thought-group {
+  position: absolute;
+  width: clamp(96px, 13vw, 175px);
+  height: 155px;
+  transform-origin: center;
+}
+.thought-group svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.thought-part {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* Schriftanimation */
+#scene-fonts {
+  flex-direction: column;
+  gap: 25px;
+}
+.font-line {
+  display: block;
+  white-space: nowrap;
+  font-size: clamp(28px, 3.5vw, 53px);
+}
+.font-serif {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+.font-sans {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+.font-mansory {
+  font-family: var(--font-display);
+}
+/* Farbspritzer */
+.paint-splash {
+  position: absolute;
+  width: clamp(110px, 15vw, 210px);
+  overflow: visible;
+}
+/* Formverwandlung */
+.morph-shape {
+  width: clamp(160px, 19vw, 260px);
+  aspect-ratio: 1;
+  background: linear-gradient(
+    135deg,
+    var(--rose-soft),
+    var(--rose)
+  );
+  border-radius: 50%;
+  will-change:
+    border-radius,
+    transform;
+}
+/* Original-Logo */
+.final-logo {
+  width: 78%;
+  height: 75%;
+  object-fit: contain;
+}
+
+/* ==========================================
+   18. PORTFOLIO
+   ========================================== */
+.portfolio-section {
+  position: relative;
+  background: var(--bloom);
+}
+.portfolio-sticky {
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100svh - var(--header-height));
+  min-height: 0;
+  overflow: hidden;
+}
+.portfolio-section .section-ghost {
+  margin-bottom: 12px;
+  padding-top: 0;
+}
+.portfolio-window {
+  flex: none;
+  width: 100%;
+  overflow: hidden;
+}
+.portfolio-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 25px;
+  padding:
+    10px var(--gutter)
+    25px;
+  will-change: transform;
+}
+.project {
+  flex: none;
+  width: clamp(320px, 34vw, 495px);
+  padding: 12px;
+  border: 1px solid white;
+  background: rgba(255, 249, 243, .88);
+  text-align: left;
+  box-shadow:
+    0 10px 25px rgba(73, 53, 44, .08);
+}
+.project-image {
+  display: grid;
+  place-items: center;
+  height: clamp(235px, 28vw, 395px);
+  overflow: hidden;
+  background: linear-gradient(
+    140deg,
+    #E9C9B9,
+    #F4E8DE
+  );
+}
+/* Portfolio-Mockups füllen ihre rosafarbene Bildfläche vollständig aus. */
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.project-template .project-image img {
+  transform: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: initial;
+}
+.project-template .project-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+/* Plakat: vollständig zeigen, etwas kleiner */
+.project[data-title="Plakate"] .project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center 32%;
+  transform: translateY(-13px);
+}
+.project strong {
+  display: block;
+  margin: 15px 7px 2px;
+  font: 400 clamp(28px, 3vw, 44px)/1.1
+        var(--font-display);
+}
+.project small {
+  display: block;
+  margin: 0 7px 7px;
+  color: var(--muted);
+}
+
+/* ==========================================
+   19. MEINE TOOLS
+   ========================================== */
+.tool-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  min-height: 195px;
+  padding: 19px;
+  background: #F0DDD1;
+  border: 1px solid #DDBBAB;
+  text-align: left;
+  transition:
+    background .25s,
+    transform .25s;
+}
+.tool:nth-child(3n + 2) {
+  background: var(--bloom);
+}
+.tool:hover,
+.tool:focus-visible {
+  transform: translateY(-5px);
+  background: var(--white);
+}
+.tool b {
+  width: 49px;
+  height: 49px;
+  display: grid;
+  place-items: center;
+  margin-bottom: auto;
+  border: 1px solid #CEA394;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.tool strong {
+  margin-top: 17px;
+  font: 400 clamp(21px, 1.8vw, 29px)/1.1
+        var(--font-display);
+  overflow-wrap: anywhere;
+}
+.tool small {
+  color: var(--muted);
+}
+
+/* ==========================================
+   20. TOOL-VORSCHAU
+   ========================================== */
+.tool-preview {
+  position: fixed;
+  z-index: 150;
+  top: 16%;
+  right: 4%;
+  width: min(450px, 91vw);
+  background: var(--white);
+  border: 1px solid #D8B5A6;
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow:
+    0 22px 65px rgba(73, 53, 44, .28);
+}
+.tool-preview[hidden] {
+  display: none;
+}
+.tool-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: var(--bloom);
+}
+.tool-preview-header button {
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+}
+.tool-preview-content {
+  display: grid;
+  place-items: center;
+  height: 275px;
+  padding: 18px;
+  overflow: hidden;
+}
+/* InDesign */
+.mini-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  width: 172px;
+  height: 214px;
+  padding: 14px;
+  background: white;
+  box-shadow: 0 10px 25px #49352C22;
+}
+.mini-page i {
+  background: var(--clay);
+}
+.mini-page i:first-child {
+  grid-column: span 2;
+}
+/* Illustrator */
+.mini-vector {
+  width: 170px;
+  height: 170px;
+  background: var(--rose);
+  border-radius: 50%;
+}
+/* Photoshop */
+.mini-photoshop {
+  position: relative;
+  width: 100%;
+  height: 225px;
+  overflow: hidden;
+  background: #D5C0B2;
+}
+.ps-image {
+  position: absolute;
+  inset: 18px 30px;
+  background: linear-gradient(
+    135deg,
+    #A77868 0 35%,
+    #EAC7B6 35% 67%,
+    #E9E0D0 67%
+  );
+}
+.ps-crop {
+  position: absolute;
+  inset: 30px 50px;
+  border: 2px solid white;
+  box-shadow:
+    0 0 0 100px rgba(45, 30, 24, .3);
+}
+.ps-crop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 33%,
+      #FFFFFFAA 33.3%,
+      transparent 33.6%,
+      transparent 66%,
+      #FFFFFFAA 66.3%,
+      transparent 66.6%
+    ),
+    linear-gradient(
+      transparent 33%,
+      #FFFFFFAA 33.3%,
+      transparent 33.6%,
+      transparent 66%,
+      #FFFFFFAA 66.3%,
+      transparent 66.6%
+    );
+}
+/* After Effects */
+.mini-motion {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  background: var(--bloom);
+}
+.mini-motion i {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+/* VS Code */
+.mini-code {
+  width: 100%;
+  height: 225px;
+  padding: 18px;
+  background: var(--brown);
+  color: var(--cream);
+  font: 12px/2 Consolas, monospace;
+}
+.mini-code span {
+  display: block;
+  min-height: 24px;
+  white-space: pre;
+}
+/* Canva */
+.mini-canva {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  width: 100%;
+  height: 225px;
+  background: var(--bloom);
+}
+.mini-canva aside {
+  padding: 10px;
+  background: var(--rose);
+}
+.mini-canva aside i {
+  display: block;
+  height: 22px;
+  margin-bottom: 8px;
+  background: #FFF9F380;
+}
+.mini-canva article {
+  display: grid;
+  place-items: center;
+  margin: 15px;
+  background: var(--rose-soft);
+  font: 35px var(--font-display);
+  text-align: center;
+}
+/* PDF */
+.mini-pdf {
+  position: relative;
+  width: 170px;
+  height: 210px;
+}
+.mini-pdf i {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: white;
+  box-shadow: 0 8px 22px #49352C25;
+}
+.mini-pdf i:nth-child(1) {
+  transform: rotate(-9deg);
+  background: var(--bloom);
+}
+.mini-pdf i:nth-child(2) {
+  transform: rotate(6deg);
+  background: var(--clay);
+}
+.mini-pdf i:nth-child(3) {
+  font: 29px var(--font-display);
+}
+/* Word */
+.mini-word {
+  width: 205px;
+  height: 225px;
+  padding: 24px;
+  background: white;
+  box-shadow: 0 8px 22px #49352C25;
+  font-size: 12px;
+}
+.mini-word strong {
+  font: 26px var(--font-display);
+}
+/* Excel */
+.mini-excel {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  width: 260px;
+  padding: 14px;
+  background: white;
+  box-shadow: 0 8px 22px #49352C25;
+}
+.mini-excel i {
+  height: 26px;
+  background: var(--bloom);
+}
+.mini-excel i:nth-child(5n + 1) {
+  background: var(--clay);
+}
+/* PowerPoint */
+.ppt-app {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+  gap: 10px;
+  width: 100%;
+  height: 235px;
+  padding: 10px;
+  background: var(--cream);
+}
+.ppt-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ppt-thumbs button {
+  height: 45px;
+  border: 1px solid transparent;
+  background: var(--rose-soft);
+  font: 15px var(--font-display);
+}
+.ppt-thumbs button.active {
+  border: 2px solid var(--brown);
+}
+.ppt-main {
+  display: grid;
+  place-items: center;
+  background: var(--clay);
+  font: 37px var(--font-display);
+  text-align: center;
+}
+
+/* ==========================================
+   21. WEBDESIGN
+   ========================================== */
+.webdesign-section {
+  background: var(--bloom);
+}
+.webdesign-scroll {
+  position: relative;
+  /* Exakte Höhe wird vom JS berechnet. */
+  height: 1000px;
+}
+.webdesign-sticky {
+  position: sticky;
+  top: calc(var(--header-height) + 15px);
+  display: grid;
+  grid-template-columns: .65fr 1.35fr;
+  align-items: center;
+  gap: clamp(28px, 5vw, 80px);
+  min-height: min(72svh, 550px);
+}
+.webdesign-copy small {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #976959;
+}
+.webdesign-copy h3 {
+  margin: 12px 0 20px;
+  font-size: clamp(38px, 3.6vw, 58px);
+}
+.webdesign-copy p {
+  max-width: 400px;
+}
+.device-stage {
+  display: grid;
+  place-items: center;
+  height: 490px;
+}
+.device {
+  position: relative;
+  width: min(100%, 740px);
+  will-change:
+    opacity,
+    transform;
+}
+.device-frame {
+  padding: 12px;
+  background: var(--brown);
+  border: 3px solid #735B4D;
+  border-radius: 15px;
+  box-shadow:
+    0 20px 40px rgba(73, 53, 44, .2);
+}
+.device-screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--white);
+}
+.device-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  transform: translateY(0);
+}
+.device-neck {
+  width: 18%;
+  height: 35px;
+  margin: auto;
+  background: linear-gradient(
+    90deg,
+    #B9AAA0,
+    #E6D8CB,
+    #B9AAA0
+  );
+}
+.device-foot {
+  width: 34%;
+  height: 10px;
+  margin: auto;
+  border-radius: 50% 50% 3px 3px;
+  background: #B9AAA0;
+}
+/* Tablet */
+.device.tablet {
+  width: min(68%, 470px);
+}
+.device.tablet .device-frame {
+  padding: 15px;
+  border-radius: 23px;
+}
+.device.tablet .device-screen {
+  aspect-ratio: 4 / 3;
+}
+.device.tablet .device-neck,
+.device.tablet .device-foot {
+  display: none;
+}
+/* Smartphone */
+.device.phone {
+  width: min(30%, 205px);
+}
+.device.phone .device-frame {
+  padding: 14px 8px;
+  border-radius: 27px;
+}
+.device.phone .device-screen {
+  aspect-ratio: 9 / 17;
+}
+.device.phone .device-neck,
+.device.phone .device-foot {
+  display: none;
+}
+
+/* ==========================================
+   22. SAY HELLO
+   ========================================== */
+.contact-section {
+  background: linear-gradient(
+    135deg,
+    var(--cream),
+    var(--bloom),
+    #ECD2C4
+  );
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(35px, 6vw, 95px);
+  padding: clamp(25px, 4vw, 55px);
+  background: #FFF9F39C;
+  border: 1px solid white;
+}
+.contact-info h3 {
+  margin-bottom: 30px;
+  font-size: clamp(42px, 4.3vw, 70px);
+}
+.contact-info h3 span {
+  display: block;
+  color: var(--brown);
+  white-space: nowrap;
+}
+.contact-info h3 em {
+  display: block;
+  color: var(--rose);
+}
+.contact-info > a,
+.contact-info > div {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 14px 0;
+  border-bottom:
+    1px solid #D9BCAD;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.contact-icon {
+  flex: none;
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: var(--rose);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-layout form {
+  display: grid;
+  align-content: start;
+  gap: 11px;
+}
+.contact-layout label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.contact-layout input,
+.contact-layout textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom:
+    1px solid #D6B9AA;
+  background: transparent;
+  resize: vertical;
+}
+.contact-layout form button {
+  justify-self: start;
+  margin-top: 17px;
+}
+.contact-layout form small {
+  color: var(--muted);
+}
+
+/* ==========================================
+   23. FOOTER
+   ========================================== */
+.footer {
+  background: #DFC9BD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 24px 35px;
+}
+.footer img {
+  width: 175px;
+  height: 85px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 5px rgba(73, 53, 44, .5)) drop-shadow(0 0 1px rgba(73, 53, 44, .35));
+}
+.footer small,
+.footer-legal {
+  font-size: 11px;
+}
+.footer-legal {
+  display: flex;
+  gap: 22px;
+}
+.footer-legal a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================
+   24. PROJEKT-POPUP
+   ========================================== */
+.project-dialog {
+  width: min(820px, 94vw);
+  max-width: none;
+  padding: 35px;
+  border: 0;
+  background: var(--cream);
+}
+.project-dialog::backdrop {
+  background: #49352CBF;
+}
+.dialog-close {
+  float: right;
+  background: transparent;
+  border: 0;
+  font-size: 30px;
+}
+.project-dialog h3 {
+  font-size: 48px;
+}
+.project-dialog img {
+  width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+}
+
+/* ==========================================
+   25. TABLET
+   ========================================== */
+@media (max-width: 1150px) {
+  .brand {
+    width: 135px;
+  }
+  .nav-links {
+    gap: 9px;
+  }
+  .nav-links a {
+    font-size: 12px;
+  }
+  .tool-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+  .hero {
+    grid-template-columns: 68fr 32fr;
+  }
+  .hero-title > em {
+    font-size: clamp(75px, 8vw, 115px);
+  }
+}
+
+/* ==========================================
+   26. SMARTPHONE
+   ========================================== */
+@media (max-width: 850px) {
+  :root {
+    --gutter: 22px;
+    --header-height: 70px;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+  }
+  .menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--brown);
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px var(--gutter);
+    background: var(--cream);
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links a {
+    padding: 7px 0;
+    font-size: 15px;
+  }
+  .hero {
+    display: block;
+    height: auto;
+  }
+  .hero-image {
+    height: clamp(220px, 34svh, 330px);
+  }
+  .hero-content {
+    padding: 37px 20px;
+  }
+  .hero-title {
+    font-size: 48px;
+  }
+  .hero-title > em {
+    font-size: 100px;
+  }
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+  .about-photo {
+    width: min(100%, 420px);
+    height: auto;
+    margin-inline: auto;
+  }
+  .about-photo > img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .photo-note span {
+    font-size: 13px;
+  }
+  .photo-note svg {
+    width: 58px;
+    height: 35px;
+  }
+  .facts-sticky {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 8px;
+    height: min(78svh, 640px);
+    min-height: 0;
+    top: calc(var(--header-height) + 5px);
+  }
+  .fact-art {
+    height: min(35svh, 265px);
+  }
+  .fact-card {
+    min-height: 250px;
+    padding: 22px;
+  }
+  .journey-layout {
+    grid-template-columns: 45px 1fr;
+    gap: 23px;
+  }
+  .journey-wave svg {
+    width: 45px;
+  }
+  .journey-item {
+    min-height: 300px;
+  }
+  .statement-section {
+    min-height: 205svh;
+    padding-top: 20svh;
+  }
+  .statement-title {
+    top: calc(var(--header-height) + 16svh);
+  }
+  .statement-title {
+    font-size: clamp(46px, 9vw, 75px);
+  }
+   .story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+/* ==========================================
+   MINDDESIGN – MOBILE ANIMATION & TEXT
+   ========================================== */
+
+.story-text {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: clamp(220px, 33svh, 300px);
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.story-visual {
+  position: sticky;
+  z-index: 2;
+  grid-column: 1;
+  grid-row: 1;
+
+  top: calc(var(--header-height) + 8px);
+  align-self: start;
+
+  width: 100%;
+  height: clamp(190px, 27svh, 250px);
+  margin: 0;
+}
+
+.story-step {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  min-height: 55svh;
+  padding: 25px 5px;
+
+  box-sizing: border-box;
+}
+
+.story-step h3 {
+  margin: 0 0 12px;
+}
+
+.story-step p {
+  margin: 0;
+  max-width: 100%;
+  line-height: 1.6;
+}
+  .portfolio-section {
+    height: auto !important;
+  }
+  .portfolio-sticky {
+    position: relative;
+    top: auto;
+    height: auto;
+    padding-block: 35px 55px;
+  }
+  .portfolio-window {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .portfolio-track {
+    transform: none !important;
+  }
+  .project {
+    width: min(78vw, 390px);
+    scroll-snap-align: start;
+  }
+  .tool-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+  .webdesign-sticky {
+    grid-template-columns: 1fr;
+    align-content: center;
+    min-height: min(80svh, 710px);
+    gap: 5px;
+  }
+  .device-stage {
+    height: 365px;
+  }
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+  .contact-info h3 span {
+    white-space: normal;
+  }
+}
+
+/* ==========================================
+   27. KLEINE SMARTPHONES
+   ========================================== */
+@media (max-width: 480px) {
+  :root {
+    --gutter: 17px;
+  }
+  .section-ghost {
+    font-size: clamp(43px, 9vw, 62px);
+  }
+  .hero-title > em {
+    font-size: 87px;
+  }
+  .hero-image {
+    height: clamp(195px, 29svh, 275px);
+  }
+  .about-photo {
+    width: min(100%, 340px);
+  }
+  .photo-heading {
+    font-size: 34px;
+  }
+  .fact-card {
+    min-height: 225px;
+  }
+  .fact-copy h3 {
+    font-size: 41px;
+  }
+  .story-step h3 {
+    font-size: 38px;
+  }
+  .tool {
+    min-height: 175px;
+    padding: 14px;
+  }
+  .tool strong {
+    font-size: 22px;
+  }
+  .device-stage {
+    height: 310px;
+  }
+  .contact-layout {
+    padding: 20px;
+  }
+  .project-dialog {
+    padding: 20px;
+  }
+}
+
+/* ==========================================
+   28. KLEINE BILDSCHIRMHÖHEN
+   ========================================== */
+@media (max-height: 690px) and (min-width: 851px) {
+  .portfolio-section .section-ghost {
+    font-size: 65px;
+  }
+  .project-image {
+    height: 220px;
+  }
+  .project strong {
+    font-size: 29px;
+  }
+  .facts-sticky {
+    height: calc(100svh - var(--header-height) - 28px);
+  }
+  .webdesign-sticky {
+    min-height: calc(100svh - var(--header-height) - 25px);
+  }
+  .device-stage {
+    height: 370px;
+  }
+}
+
+/* ==========================================
+   29. REDUZIERTE BEWEGUNGEN
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .journey-item,
+  .story-step {
+    opacity: 1 !important;
+  }
+}
+
+/* ==========================================
+   BACK TO TOP – einmalige Gestaltung
+   Button wird von JavaScript erstellt.
+   ========================================== */
+.back-to-top {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 50%;
+  background: rgba(242,235,221,.9);
+  color: var(--brown);
+  box-shadow: 0 9px 24px rgba(73,53,44,.16);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .3s, visibility .3s, transform .3s, background .3s;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.back-to-top:hover { background: var(--rose-soft); }
+.back-to-top svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 480px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 46px;
+    height: 46px;
+  }
+}
+
+
+/* ==========================================
+   LIVE-WEBDESIGN-VORSCHAU – NUR GERÄTEFENSTER
+   ========================================== */
+.device-screen { position: relative; isolation: isolate; }
+.device-screen .minddesign-live-frame {
+  position: absolute; top: 0; left: 0;
+  display: block; border: 0; margin: 0; padding: 0;
+  max-width: none; background: var(--cream);
+  transform-origin: top left;
+  pointer-events: none; /* Mausrad / Touch scrollt Hauptseite */
+}
+
+/* MindDesign – gezielte Verbesserungen Oktober 2026 */
+html { overflow-x: clip; }
+.hero-image img { animation: mdHeroImageIn 1.35s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes mdHeroImageIn { from { opacity:0; transform:scale(1.07) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+.hero-title > em { display:block; min-width:0; transition:font-family .15s ease; }
+/* Tablet-Rahmen dezenter */
+.device.tablet .device-frame { padding:8px; border-width:2px; border-radius:20px; }
+/* Footer wie Navigation, Lichtkante und weicher Schatten */
+.footer { border-top:1px solid rgba(255,255,255,.8); box-shadow:0 -9px 24px rgba(73,53,44,.10); }
+/* Links im Kontaktbereich erhalten einen sanften Hover */
+.contact-info a { transition:color .25s ease, transform .25s ease; }
+.contact-info a:hover { color:var(--rose); transform:translateX(4px); }
+/* Bei mobilen Ansichten darf kein Inhalt die Dokumentbreite aufziehen. */
+@media(max-width:850px) {
+  .story-layout, .story-text, .webdesign-sticky, .device-stage, .contact-layout, .about-layout {min-width:0;max-width:100%;}
+  .device-stage {overflow:hidden;}
+  .device {max-width:100%;}
+  .statement-section {padding-top:0; min-height:0; height:170svh;}
+  .statement-title {top:var(--header-height); height:calc(100svh - var(--header-height)); justify-content:center; padding:20px 16px; font-size:clamp(39px,8.5vw,75px);}
+  .story-text {padding-top:clamp(195px,30svh,275px);}
+  .story-step {min-height:clamp(300px,48svh,470px);padding:22px 5px;}
+  .story-visual {height:clamp(185px,27svh,250px);}
+}
+@media(max-width:480px) {
+ .hero-title > em {font-size:clamp(68px,21vw,87px);}
+ .section-ghost {overflow-wrap:anywhere;}
+}
+@media(prefers-reduced-motion:reduce){.hero-image img{animation:none;}}
+/* Programmfenster: erkennbare Word-Leiste und Acrobat-Start */
+.mini-word {position:relative; padding-top:45px!important;}
+.mini-word::before {content:'Datei    Start    Einfügen    Layout'; position:absolute;top:0;left:0;right:0;background:#2c5c9a;color:#fff;font:10px/1.5 Arial,sans-serif;padding:6px 10px;white-space:pre;}
+.mini-word::after {content:'B  I  U    A    ≡    •  1.';position:absolute;top:24px;left:0;right:0;background:#e8eef8;color:#264875;font:10px Arial,sans-serif;padding:5px 10px;white-space:pre;}
+.mini-pdf {transform-origin:center;animation:mdPdfOpen .85s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes mdPdfOpen {from{opacity:0;transform:translateY(18px) scale(.87)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+
+/* Feinschliff: Titelseite, Notizen, PowerPoint, Footer */
+.hero-image { isolation: isolate; }
+.hero-image img { transform-origin: center center; }
+.photo-note { max-width: 56%; padding: 12px 16px; }
+.photo-note span { line-height: 1.65; }
+/* Im Tablet-Layout bleibt das Titelbild neben dem Text und erhält mehr Höhe. */
+@media (min-width: 601px) and (max-width: 850px) {
+  .hero { display:grid; grid-template-columns:minmax(0, 57fr) minmax(0, 43fr); height:clamp(450px, 67svh, 590px); }
+  .hero-image { height:100%; min-height:0; }
+  .hero-image img { object-position:center center; }
+  .hero-content { padding:24px 12px; }
+  .hero-title { font-size:clamp(28px, 4vw, 43px); }
+  .hero-title > em { font-size:clamp(65px, 10vw, 95px); }
+  .hero-subtitle { font-size:clamp(18px, 2.7vw, 27px); }
+}
+/* Die PowerPoint-Vorschau zeigt Folienübersicht, Menüband und die ganze Folie. */
+.ppt-app { position:relative; min-width:0; grid-template-columns:78px minmax(0,1fr); gap:9px; padding:41px 9px 9px; }
+.ppt-app::before { content:'Datei     Start     Einfügen     Entwurf     Übergänge'; position:absolute; top:0; left:0; right:0; padding:10px 12px; background:#b95435; color:white; font:10px/1.3 Arial,sans-serif; white-space:nowrap; overflow:hidden; }
+.ppt-thumbs { min-width:0; }
+.ppt-thumbs button { width:100%; min-width:0; padding:3px; font-size:clamp(9px,1vw,12px); overflow-wrap:anywhere; }
+.ppt-main { min-width:0; padding:12px 8px; font-size:clamp(20px,3vw,33px); overflow-wrap:anywhere; word-break:normal; line-height:1.1; }
+/* Footer-Logo bekommt genau denselben Filter wie das Navbar-Logo. */
+.footer img { filter:drop-shadow(0 2px 3px rgba(73, 53, 44, .26)); }
+/* Kleine Notizen behalten innen einen lesbaren Rand. */
+@media(max-width:480px) { .photo-note { max-width:62%; padding:10px 12px; } }
+/* Im eingebetteten Gerät darf das Marquee nicht statisch überschrieben werden. */
+html.minddesign-preview .marquee-track { will-change:transform; }
+
+/* Kontakt: Jeder Eintrag einschließlich Neuenstein hat denselben Hover. */
+.contact-info > a { cursor:pointer; transition: color .25s ease, transform .25s ease; }
+.contact-info > a:hover, .contact-info > a:focus-visible { color:var(--rose); transform:translateX(4px); }
+/* Ein einziger identischer Schlagschatten für beide MindDesign-Logos. */
+.site-header .brand img, .footer img { filter:drop-shadow(0 2px 3px rgba(73, 53, 44, .26)); }
+
+/* KORREKTUREN: Word-Menüband als echte HTML-Zeichen (UTF-8). */
+.mini-word::before,.mini-word::after{content:none!important;display:none!important}
+.mini-word{position:relative;padding:70px 16px 16px!important;width:min(270px,100%);height:235px}
+.word-toolbar{position:absolute;inset:0 0 auto;font:11px/1.5 Arial,sans-serif;text-align:left}
+.word-toolbar>div:first-child{background:#245c9c;color:white;padding:7px 9px;white-space:nowrap}
+.word-toolbar>div:last-child{background:#e8eef8;color:#264875;padding:6px 9px}
+/* PowerPoint: Foliennavigation und Überschriften bleiben im Rahmen. */
+.ppt-app{grid-template-columns:90px minmax(0,1fr);width:100%;max-width:100%;overflow:hidden}
+.ppt-thumbs button{font:11px/1.15 Arial,sans-serif!important;overflow-wrap:anywhere;word-break:break-word;white-space:normal;padding:3px!important}
+.ppt-main{font-size:clamp(19px,3vw,30px)!important;overflow-wrap:anywhere;word-break:break-word;min-width:0;text-align:center}
+/* Hoverfenster darf die darunterliegenden Kacheln nicht abfangen. */
+@media(hover:hover) and (pointer:fine){
+ .tool-preview{pointer-events:none}
+ .tool-preview-header button,.ppt-thumbs button{pointer-events:auto}
+}
+/* Notizen: JavaScript lässt die fünf Karten nacheinander erscheinen. */
+.photo-note{opacity:0}
+
+/* PowerPoint-Menü: echte HTML-Elemente statt CSS-content, damit Umlaute stimmen. */
+.ppt-app::before { content: none !important; display: none !important; }
+.ppt-app { position: relative; padding-top: 47px; }
+.ppt-ribbon {
+  position: absolute;
+  inset: 0 0 auto 0;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: clamp(5px, 1.2vw, 14px);
+  padding: 7px 10px;
+  background: #b95435;
+  color: #fff;
+  font: 11px/1.3 Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ppt-ribbon span { flex: 0 1 auto; min-width: 0; }
+@media (max-width: 480px) {
+  .ppt-ribbon { gap: 5px; padding-inline: 6px; font-size: 9px; }
+}
